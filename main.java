@@ -70,6 +70,7 @@ public class main {
         File pngDir = new File(pngPath);
         File[] pngs = pngDir.listFiles();
         int count = 0;
+        final String PREFIX_PNG = "png_";
 
         System.out.println("Converting files");
         String dots = "_ ";
@@ -84,7 +85,7 @@ public class main {
             String pngName = pngElem.getName();
             pngName = pngName.substring(0, pngName.indexOf('.'));
             //pngName = pngName.split(".")[0];
-            String convCMD = "python " + "./utils/bin2cc.py " + "./src/gui/res/png/" + pngName + ".png "  + "./src/gui/res/cc/" +  pngName + ".c " + pngName;    
+            String convCMD = "python " + "./utils/bin2cc.py " + "./src/gui/res/png/" + pngName + ".png "  + "./src/gui/res/cc/" + PREFIX_PNG + pngName + ".c " + PREFIX_PNG + pngName;    
             ProcessBuilder builder = new ProcessBuilder(
             "cmd.exe","/c", "cd " + commonPath + " && " + convCMD);
             builder.redirectErrorStream(true);
